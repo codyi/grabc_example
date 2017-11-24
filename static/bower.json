@@ -1,0 +1,17 @@
+{
+  "name": "Go Cron Job",
+  "homepage": "http://gocron.liguosong.com",
+  "authors": [
+    "李国松 <mail@liguosong.com>"
+  ],
+  "description": "Go cron job manage system",
+  "main": "",
+  "keywords": [
+    "Go cron job"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "admin-lte": "adminLTE#^2.4.2",
+    "bootstrap": "^3.3.7"
+  }
+}
