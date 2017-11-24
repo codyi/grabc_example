@@ -1,9 +1,42 @@
-Golang 开发的定时任务管理系统
+# GoCronJob
+GoCronJob 是用于管理本机的定时任务系统。系统可以监听job的执行状态，记录执行的日志。
 
-本系统采用beego框架开发，所以在此之前需要安装beego
+###### 详情 [gocron.liguosong.com](http://gocron.liguosong.com)
 
- go get -u github.com/astaxie/beego
+## 快速安装
 
-首次安装请按照步骤安装，输入数据库信息，系统会自动创建表
+#### 下载并且安装
 
-首次安装之后会在conf下生成app.lock文件，以后不会再次提示安装
+    go get github.com/astaxie/beego
+
+#### Create file `hello.go`
+```go
+package main
+
+import "github.com/astaxie/beego"
+
+func main(){
+    beego.Run()
+}
+```
+#### Build and run
+
+    go build hello.go
+    ./hello
+
+#### Go to [http://localhost:8080](http://localhost:8080)
+
+Congratulations! You've just built your first **beego** app.
+
+###### Please see [Documentation](http://beego.me/docs) for more.
+
+## Features
+
+* RESTful support
+* MVC architecture
+* Modularity
+* Auto API documents
+* Annotation router
+* Namespace
+* Powerful development tools
+* Full stack for Web & API
