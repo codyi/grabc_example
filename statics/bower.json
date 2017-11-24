@@ -1,0 +1,13 @@
+{
+  "name": "Go Cron Job",
+  "homepage": "http://cron.liguosong.com",
+  "authors": [
+    "李国松 <mail@liguosong.com>"
+  ],
+  "description": "Go cron job manage system",
+  "main": "",
+  "keywords": [
+    "Go cron job"
+  ],
+  "license": "MIT"
+}
