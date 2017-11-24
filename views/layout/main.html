@@ -9,65 +9,72 @@
         <link rel="stylesheet" href="/static/bower_extensions/admin-lte/dist/css/AdminLTE.min.css?v={{.siteStaticVersion}}" type="text/css">
         <link rel="stylesheet" href="/static/bower_extensions/admin-lte/dist/css/skins/skin-blue.css?v={{.siteStaticVersion}}" type="text/css">
         <link rel="stylesheet" href="/static/css/common.css?v={{.siteStaticVersion}}" type="text/css">
-        <script src="/static/bower_extensions/jquery/dist/jquery.min.js?v={{.siteStaticVersion}}"></script>
-        <script src="/static/bower_extensions/bootstrap/dist/js/bootstrap.min.js?v={{.siteStaticVersion}}"></script>
-        <script src="/static/js/common.js?v={{.siteStaticVersion}}"></script>
     </head>
     <body class="skin-blue sidebar-mini">
         <div class="wrapper">
             <header class="main-header">
-                <a class="logo" href="/"><span class="logo-mini">{{.app_name}}</span><span class="logo-lg">{{.app_name}}</span></a>
-                <nav class="navbar navbar-static-top" role="navigation">
-                    <!-- Sidebar toggle button-->
-                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                        <span class="sr-only">Toggle navigation</span>
+                <a href="index2.html" class="logo">
+                    {{.app_name}}
+                </a>
+
+
+            <nav class="navbar navbar-static-top">
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+              <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">  
+                  <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <i class="fa fa-user"></i>
+                      <span class="hidden-xs">你好，管理员</span>
                     </a>
-                    <!-- Navbar Right Menu -->
-                    <div class="navbar-custom-menu">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown  user user-menu">
-                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-user"></i>
-                                <span class="hidden-xs">Hi, 管理员</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <!-- Menu Body -->
-                                <li class="user-body">
-                                    <div class="text-center">
-                                        最近登录时间：2017-11-24 17:10:00                                </div>
-                                </li>
-                                <!-- Menu Footer-->
-                                <li class="user-footer">
-                                    <div class="pull-left">
-                                        <a class="btn btn-primary" href="/user/modify-password" data-method="post" style="background-color:#3c8dbc">修改密码</a>                                </div>
-                                    <div class="pull-right">
-                                        <a class="btn btn-default btn-flat" href="/site/logout" data-method="post">退出</a>                                </div>
-                                </li>
-                            </ul>
-                        </li>
+                    <ul class="dropdown-menu">
+                      <li class="user-body">
+                        <div class="text-center">
+                          最近登录时间
+                        </div>
+                        
+                      </li>
+                      
+                      <li class="user-footer">
+                        <div class="pull-left">
+                          <a href="#" class="btn btn-primary btn-flat">修改密码</a>
+                        </div>
+                        <div class="pull-right">
+                          <a href="#" class="btn btn-default btn-flat">退出</a>
+                        </div>
+                      </li>
                     </ul>
-                    </div>
-                </nav>
+                  </li>
+                </ul>
+              </div>
+
+            </nav>
             </header>
             <aside class="main-sidebar">
-                <section class="sidebar">
-                    <ul class="sidebar-menu">
-                        <li icon="fa  fa-cogs" visible="">
-                            <a href="/admin/default/index"><i class="fa  fa-cogs"></i>  
-                            <span>权限控制</span> 
-                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                                <ul class="treeview-menu">
-                                    <li><a href="/admin/route/index"><i class="fa fa-circle-o"></i>  <span>路由</span></a></li>
-                                    <li><a href="/admin/permission/index"><i class="fa fa-circle-o"></i>  <span>权限</span></a></li>
-                                    <li><a href="/admin/role/index"><i class="fa fa-circle-o"></i>  <span>角色</span></a></li>
-                                    <li><a href="/admin/assignment/index"><i class="fa fa-circle-o"></i>  <span>分配</span></a></li>
-                                    <li><a href="/admin/menu/index"><i class="fa fa-circle-o"></i>  <span>菜单</span></a></li>
-                                </ul>
-                        </li>
-                        <li icon="fa fa-group" visible=""><a href="/user/index"><i class="fa fa-group"></i>  <span>用户管理</span></a></li>
-                    </ul>    
-                </section>
-            </aside>
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar" style="height: auto;">
+              <!-- sidebar menu: : style can be found in sidebar.less -->
+              <ul class="sidebar-menu tree" data-widget="tree">
+                
+                <li class="active treeview menu-open">
+                  <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+                    <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                  </ul>
+                </li>
+                <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+              </ul>
+            </section>
+            <!-- /.sidebar -->
+          </aside>
             <div class="content-wrapper">
                 <section class="content-header" style="height:40px">
                     
@@ -78,5 +85,9 @@
                 </section>
             </div>
         </div>
+        <script src="/static/bower_extensions/jquery/dist/jquery.min.js?v={{.siteStaticVersion}}"></script>
+        <script src="/static/bower_extensions/bootstrap/dist/js/bootstrap.min.js?v={{.siteStaticVersion}}"></script>
+        <script src="/static/bower_extensions/admin-lte/dist/js/adminlte.min.js?v={{.siteStaticVersion}}"></script>
+        <script src="/static/js/common.js?v={{.siteStaticVersion}}"></script>
     </body>
 </html>
