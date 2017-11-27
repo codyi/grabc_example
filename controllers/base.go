@@ -1,8 +1,10 @@
 package controllers
 
 import (
+	"errors"
 	"github.com/astaxie/beego"
 	"goCronJob/libs"
+	. "goCronJob/models"
 	"strings"
 )
 
@@ -15,53 +17,72 @@ type BaseController struct {
 }
 
 // Prepare
-func (self *BaseController) Prepare() {
-	controlerName, actionName := self.GetControllerAndAction()
-	self.controllerName = strings.ToLower(controlerName[0 : len(controlerName)-10])
-	self.actionName = strings.ToLower(actionName)
-	self.setLayout("layout/main.html")
-	self.siteTitle = beego.AppConfig.String("site.title")
+func (this *BaseController) Prepare() {
+	controlerName, actionName := this.GetControllerAndAction()
+	this.controllerName = strings.ToLower(controlerName[0 : len(controlerName)-10])
+	this.actionName = strings.ToLower(actionName)
+	this.setLayout("layout/main.html")
+	this.siteTitle = beego.AppConfig.String("site.title")
 
 	//if application is not installed,will redirect to install page
 	if libs.IsInstall() {
 
-	} else if self.controllerName != "install" {
-		self.controllerName = "install"
-		self.actionName = "index"
+	} else if this.controllerName != "install" {
+		this.controllerName = "install"
+		this.actionName = "index"
 	}
 }
 
 // redirect to url
-func (self *BaseController) redirect(url string) {
-	// self.Redirect(url, 301)
-	self.Controller.Redirect(url, 301)
-	self.StopRun()
+func (this *BaseController) redirect(url string) {
+	// this.Redirect(url, 301)
+	this.Controller.Redirect(url, 301)
+	this.StopRun()
 }
 
 // load tpl
-func (self *BaseController) showHtml(tpl ...string) {
+func (this *BaseController) showHtml(tpl ...string) {
 	if len(tpl) > 0 {
-		self.TplName = tpl[0]
+		this.TplName = tpl[0]
 	} else {
-		self.TplName = self.controllerName + "/" + self.actionName + ".html"
+		this.TplName = this.controllerName + "/" + this.actionName + ".html"
 	}
 
-	self.Data["siteTitle"] = self.siteTitle
-	self.Data["siteStaticVersion"] = beego.AppConfig.String("site.static.version")
-	self.Data["app_name"] = beego.AppConfig.String("appname")
+	this.Data["siteTitle"] = this.siteTitle
+	this.Data["siteStaticVersion"] = beego.AppConfig.String("site.static.version")
+	this.Data["app_name"] = beego.AppConfig.String("appname")
 }
 
 //set layout
-func (self *BaseController) setLayout(layout string) {
-	self.Layout = layout
+func (this *BaseController) setLayout(layout string) {
+	this.Layout = layout
 }
 
 //set web title
-func (self *BaseController) setSiteTile(title string) {
-	self.siteTitle = title
+func (this *BaseController) setSiteTile(title string) {
+	this.siteTitle = title
 }
 
 // 是否POST提交
-func (self *BaseController) isPost() bool {
-	return self.Ctx.Request.Method == "POST"
+func (this *BaseController) isPost() bool {
+	return this.Ctx.Request.Method == "POST"
+}
+
+//login by phone and password
+func (this *BaseController) Login(phone string, password string) (err error) {
+	if phone == "" || password == "" {
+		return errors.New("登录信息不能为空")
+	}
+
+	user := User{}
+	err = user.FindByPhone(phone)
+
+	if err != nil {
+		return err
+	} else if user.ValidatePassword(password) {
+		this.SetSession("login_user_id", user.Id)
+		return nil
+	} else {
+		return errors.New("登录信息不正确")
+	}
 }
