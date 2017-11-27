@@ -2,7 +2,6 @@ package models
 
 import (
 	"errors"
-	"fmt"
 	"github.com/astaxie/beego/orm"
 	. "goCronJob/libs"
 )
@@ -34,8 +33,6 @@ func (this *User) FindByPhone(phone string) error {
 
 //validate user password is correct
 func (this *User) ValidatePassword(password string) bool {
-	fmt.Println(this.Password)
-	fmt.Println(Md5(password))
 	return this.Password == Md5(password)
 }
 
@@ -53,4 +50,10 @@ func (this *User) ModifyPassword(password string) bool {
 	}
 
 	return false
+}
+
+//Find user by id
+func (this *User) FindById(id int) error {
+	o := orm.NewOrm()
+	return o.QueryTable(this.TableName()).Filter("id", id).One(this)
 }

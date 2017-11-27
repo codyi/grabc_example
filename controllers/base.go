@@ -14,6 +14,7 @@ type BaseController struct {
 	controllerName string
 	actionName     string
 	siteTitle      string
+	user           User
 }
 
 // Prepare
@@ -30,6 +31,13 @@ func (this *BaseController) Prepare() {
 	} else if this.controllerName != "install" {
 		this.controllerName = "install"
 		this.actionName = "index"
+	}
+
+	sessionUId := this.GetSession("login_user_id")
+
+	if sessionUId != nil {
+		this.user = User{}
+		this.user.FindById(sessionUId.(int))
 	}
 }
 
@@ -69,7 +77,7 @@ func (this *BaseController) isPost() bool {
 }
 
 //login by phone and password
-func (this *BaseController) Login(phone string, password string) (err error) {
+func (this *BaseController) login(phone string, password string) (err error) {
 	if phone == "" || password == "" {
 		return errors.New("登录信息不能为空")
 	}
@@ -85,4 +93,14 @@ func (this *BaseController) Login(phone string, password string) (err error) {
 	} else {
 		return errors.New("登录信息不正确")
 	}
+}
+
+//user logout
+func (this *BaseController) logout() {
+	this.DelSession("login_user_id")
+}
+
+//check is user login
+func (this *BaseController) isLogin() bool {
+	return this.user.Id > 0
 }
