@@ -5,17 +5,17 @@
     <!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg"></p>
-
-        <form id="login-form" action="/site/index" method="post" role="form">
+{{.error}}
+        <form id="login-form" action="/site/login" method="post" role="form">
             <div class="form-group has-feedback field-loginform-username required">
 
-                <input type="text" id="loginform-username" class="form-control" name="LoginForm[username]" placeholder="登陆用户名"><span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <input type="text" id="phone" class="form-control" name="phone" placeholder="登陆用户名"><span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 
                 <p class="help-block help-block-error"></p>
             </div>
             <div class="form-group has-feedback field-loginform-password required">
 
-                <input type="password" id="loginform-password" class="form-control" name="LoginForm[password]" placeholder="密码"><span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <input type="password" id="lpassword" class="form-control" name="password" placeholder="密码"><span class="glyphicon glyphicon-lock form-control-feedback"></span>
 
                 <p class="help-block help-block-error"></p>
             </div>

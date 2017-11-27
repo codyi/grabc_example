@@ -60,3 +60,8 @@ func (self *BaseController) setLayout(layout string) {
 func (self *BaseController) setSiteTile(title string) {
 	self.siteTitle = title
 }
+
+// 是否POST提交
+func (self *BaseController) isPost() bool {
+	return self.Ctx.Request.Method == "POST"
+}
