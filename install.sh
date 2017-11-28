@@ -1,17 +1,17 @@
 #!/bin/sh
-echo "GoCronJob 安装向导"
+echo "GoCronJob 一键安装向导"
 
-echo "安装 beego"
-go get -u github.com/astaxie/beego
+# echo "安装 beego"
+# go get -u github.com/astaxie/beego
 
-echo "安装 bee"
-go get -u github.com/beego/bee
+# echo "安装 bee"
+# go get -u github.com/beego/bee
 
-echo "安装 mysql go-sql-driver"
-go get -u github.com/go-sql-driver/mysql
+# echo "安装 mysql go-sql-driver"
+# go get -u github.com/go-sql-driver/mysql
 
-echo "安装 beego/orm"
-go get github.com/astaxie/beego/orm
+# echo "安装 beego/orm"
+# go get github.com/astaxie/beego/orm
 
 echo 
 echo 
@@ -43,8 +43,11 @@ if [ $is_install = "yes" ]; then
 else 
 	echo "数据库创建取消，请按照如下提示手动安装并在数据库中导入conf目录下的install.sql"
 	echo "在conf目录app.conf文件中增加如下配置"
+	echo
 	printf "# 数据库配置\ndb.host = mysq_host\ndb.user = mysql_user_name\ndb.password = password\ndb.port = port\ndb.name = database_name\n"
 fi
 
+echo "\nisInstall = true" >> conf/app.conf
+echo 
 echo "配置完成"
 echo 
