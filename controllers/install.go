@@ -6,5 +6,6 @@ type InstallController struct {
 
 //User install page
 func (this *InstallController) Index() {
+	this.setLayout("layout/main-login.html")
 	this.showHtml()
 }

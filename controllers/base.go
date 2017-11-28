@@ -24,21 +24,7 @@ func (this *BaseController) Prepare() {
 	this.actionName = strings.ToLower(actionName)
 	this.setLayout("layout/main.html")
 	this.siteTitle = beego.AppConfig.String("site.title")
-
-	//if application is not installed,will redirect to install page
-	if libs.IsInstall() {
-
-	} else if this.controllerName != "install" {
-		this.controllerName = "install"
-		this.actionName = "index"
-	}
-
-	sessionUId := this.GetSession("login_user_id")
-
-	if sessionUId != nil {
-		this.user = User{}
-		this.user.FindById(sessionUId.(int))
-	}
+	this.checkPermision()
 }
 
 // redirect to url
@@ -103,4 +89,32 @@ func (this *BaseController) logout() {
 //check is user login
 func (this *BaseController) isLogin() bool {
 	return this.user.Id > 0
+}
+
+//check user permission
+func (this *BaseController) checkPermision() {
+	if !libs.IsInstall() {
+		this.checkInstall()
+		return
+	}
+
+	sessionUId := this.GetSession("login_user_id")
+
+	if sessionUId != nil {
+		this.user = User{}
+		this.user.FindById(sessionUId.(int))
+	}
+
+	if this.isLogin() {
+		//todo: check user pemission
+	} else if (this.controllerName != "site" && this.actionName != "login") || (this.controllerName == "site" && this.actionName != "login") {
+		this.redirect(beego.URLFor("SiteController.Login"))
+	}
+}
+
+////if application is not installed,will redirect to install page
+func (this *BaseController) checkInstall() {
+	if !libs.IsInstall() && this.controllerName != "install" {
+		this.redirect(beego.URLFor("InstallController.Index"))
+	}
 }

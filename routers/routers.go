@@ -7,4 +7,5 @@ import (
 
 func init() {
 	beego.AutoRouter(&controllers.SiteController{})
+	beego.AutoRouter(&controllers.InstallController{})
 }
