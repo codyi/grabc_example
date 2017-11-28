@@ -47,6 +47,7 @@ else
 	printf "# 数据库配置\ndb.host = mysq_host\ndb.user = mysql_user_name\ndb.password = password\ndb.port = port\ndb.name = database_name\n"
 fi
 
+cp conf/app.conf.example conf/app.conf
 echo "\nisInstall = true" >> conf/app.conf
 echo 
 echo "配置完成"
