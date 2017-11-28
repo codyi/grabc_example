@@ -3,9 +3,8 @@ GoCronJob 是用于管理本机的定时任务系统。系统可以监听job的�
 
 ###### 详情 [gocron.liguosong.com](http://gocron.liguosong.com)
 
-### 下载&安装
-    go get github.com/astaxie/beego
-    go get github.com:codyi/goCronJob
+### 安装
+    执行install.sh
 
 ### 说明
 
