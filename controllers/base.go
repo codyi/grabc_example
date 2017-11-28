@@ -10,6 +10,7 @@ import (
 
 //BaseController
 type BaseController struct {
+	libs.Alert
 	beego.Controller
 	controllerName string
 	actionName     string
@@ -29,7 +30,6 @@ func (this *BaseController) Prepare() {
 
 // redirect to url
 func (this *BaseController) redirect(url string) {
-	// this.Redirect(url, 301)
 	this.Controller.Redirect(url, 301)
 	this.StopRun()
 }
@@ -45,6 +45,7 @@ func (this *BaseController) showHtml(tpl ...string) {
 	this.Data["siteTitle"] = this.siteTitle
 	this.Data["siteStaticVersion"] = beego.AppConfig.String("site.static.version")
 	this.Data["app_name"] = beego.AppConfig.String("appname")
+	this.Data["alert_messages"] = this.Alert
 }
 
 //set layout
@@ -108,13 +109,35 @@ func (this *BaseController) checkPermision() {
 	if this.isLogin() {
 		//todo: check user pemission
 	} else if (this.controllerName != "site" && this.actionName != "login") || (this.controllerName == "site" && this.actionName != "login") {
-		this.redirect(beego.URLFor("SiteController.Login"))
+		this.redirect(this.URLFor("SiteController.Login"))
 	}
 }
 
 ////if application is not installed,will redirect to install page
 func (this *BaseController) checkInstall() {
 	if !libs.IsInstall() && this.controllerName != "install" {
-		this.redirect(beego.URLFor("InstallController.Index"))
+		this.redirect(this.URLFor("InstallController.Index"))
 	}
+}
+
+//set page title
+func (this *BaseController) setPageTitle(pageTitle string) {
+	this.Data["pageTitle"] = pageTitle
+}
+
+//set Breadcrumbs
+func (this *BaseController) addBreadcrumbs(label, url string) {
+	var breadcrumbs []map[string]string
+
+	if this.Data["breadcrumbs"] == nil {
+		this.Data["breadcrumbs"] = breadcrumbs
+	} else {
+		breadcrumbs, _ = this.Data["breadcrumbs"].([]map[string]string)
+	}
+
+	breadcrumb := make(map[string]string)
+	breadcrumb["label"] = label
+	breadcrumb["url"] = url
+
+	this.Data["breadcrumbs"] = append(breadcrumbs, breadcrumb)
 }

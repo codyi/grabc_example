@@ -14,7 +14,6 @@ echo "安装 beego/orm"
 go get github.com/astaxie/beego/orm
 
 echo 
-echo "复制app.conf配置文件"
 cp conf/app.conf.example conf/app.conf
 
 read -p "输入监听端口号(默认8080):" listen_port

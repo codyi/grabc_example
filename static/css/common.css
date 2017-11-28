@@ -15,3 +15,7 @@ body{
 	background: #d2d6de;
 }
 /* login page end*/
+
+.alert{
+	margin: 15px;
+}
