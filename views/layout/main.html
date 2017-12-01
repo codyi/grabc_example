@@ -49,20 +49,7 @@
             <section class="sidebar" style="height: auto;">
               <!-- sidebar menu: : style can be found in sidebar.less -->
               <ul class="sidebar-menu tree" data-widget="tree">
-                
-                <li class="active treeview menu-open">
-                  <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                    <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-                  </ul>
-                </li>
-                <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+                <li class="active"><a href='{{urlfor "JobController.Index"}}'><i class="fa fa-book"></i> <span>任务管理</span></a></li>
               </ul>
             </section>
             <!-- /.sidebar -->
@@ -86,7 +73,7 @@
                   {{end}}
                 </ul>
               </section>
-{{template "layout/alert.html" .}}
+              {{template "layout/alert.html" .}}
               <section class="content">
                   {{.LayoutContent}}
               </section>
