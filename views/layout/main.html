@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{template "layout/header.html" .}}
+    </head>
+    <body class="skin-blue sidebar-mini">
+        <div class="wrapper">
+            <header class="main-header">
+                <a href="/site/index" class="logo">
+                    {{.app_name}}示例
+                </a>
+
+            <nav class="navbar navbar-static-top">
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+              <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">  
+                  <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <i class="fa fa-user"></i>
+                      <span class="hidden-xs">你好，管理员</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li class="user-footer">
+                        <div class="pull-left">
+                          <a href="/user/modifypassword" class="btn btn-primary btn-flat">修改密码</a>
+                        </div>
+                        <div class="pull-right">
+                          <a href="/site/logout" class="btn btn-default btn-flat">退出</a>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+            </nav>
+            </header>
+            <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar" style="height: auto;">
+              <!-- sidebar menu: : style can be found in sidebar.less -->
+              <ul class="sidebar-menu tree" data-widget="tree">
+                <li><a href='/route/index'><i class="fa fa-book"></i> <span>路由管理</span></a></li>
+                <li><a href='/permission/index'><i class="fa fa-book"></i> <span>权限管理</span></a></li>
+                <li><a href='/role/index'><i class="fa fa-book"></i> <span>角色管理</span></a></li>
+                <li><a href='/assignment/index'><i class="fa fa-book"></i> <span>用户授权</span></a></li>
+              </ul>
+            </section>
+            <!-- /.sidebar -->
+          </aside>
+            <div class="content-wrapper">
+              <section class="content-header">
+                <h1>{{.pageTitle}}&nbsp;</h1>
+                <ul class="breadcrumb">
+                  <li>
+                    <a href='{{urlfor "SiteController.Index"}}'>
+                      <i class='fa fa-dashboard'></i>
+                      首页
+                    </a>
+                  </li>
+                  {{range $breadcrumb := .breadcrumbs}}
+                  <li>
+                    <a href='{{index $breadcrumb "url"}}'>
+                      {{index $breadcrumb "label"}}
+                    </a>
+                  </li>
+                  {{end}}
+                </ul>
+              </section>
+              <section class="content">
+                  {{.LayoutContent}}
+              </section>
+            </div>
+        </div>
+        {{template "layout/footer.html" .}}
+    </body>
+</html>
