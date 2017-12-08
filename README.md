@@ -7,7 +7,8 @@
 GRABC 是一个beego权限管理插件，这个是一个beego应用GRABC的示例~~
 
 ### 安装
-    git clone git@github.com:codyi/grabc_example.git
+进入go的src目录，执行以下命令：
+    git clone git@github.com:codyi/grabc_example.git
     
 然后进入项目目录执行install.sh，根据提示输入数据库的配置~~然后，然后安装完了~~是不是很简单，抓紧运行bee run 或 go run main.go看一下效果吧（默认网址：127.0.0.1：8080）
 
