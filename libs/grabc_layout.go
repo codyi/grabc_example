@@ -1,7 +1,20 @@
+package libs
+
+var Grabc_layout = `
 <!DOCTYPE html>
 <html>
     <head>
-        {{template "layout/header.html" .}}
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>权限管理</title>
+		<link rel="stylesheet" href="/static/bower_extensions/bootstrap/dist/css/bootstrap.min.css?v={{.siteStaticVersion}}" type="text/css">
+		<link rel="stylesheet" href="/static/bower_extensions/font-awesome/css/font-awesome.min.css?v={{.siteStaticVersion}}" type="text/css">
+		<link rel="stylesheet" href="/static/bower_extensions/admin-lte/dist/css/AdminLTE.min.css?v={{.siteStaticVersion}}" type="text/css">
+		<link rel="stylesheet" href="/static/bower_extensions/admin-lte/dist/css/skins/skin-blue.css?v={{.siteStaticVersion}}" type="text/css">
+		<link rel="stylesheet" href="/static/css/common.css?v={{.siteStaticVersion}}" type="text/css">
+		<script src="/static/bower_extensions/jquery/dist/jquery.min.js?v={{.siteStaticVersion}}"></script>
+		<script src="/static/bower_extensions/bootstrap/dist/js/bootstrap.min.js?v={{.siteStaticVersion}}"></script>
+		<script src="/static/bower_extensions/admin-lte/dist/js/adminlte.min.js?v={{.siteStaticVersion}}"></script>
     </head>
     <body class="skin-blue sidebar-mini">
         <div class="wrapper">
@@ -19,7 +32,7 @@
                   <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                       <i class="fa fa-user"></i>
-                      <span class="hidden-xs">你好，管理员</span>
+                      <span class="hidden-xs">你好，管理员{{.manage_name}}</span>
                     </a>
                     <ul class="dropdown-menu">
                       <li class="user-footer">
@@ -50,30 +63,10 @@
             </section>
             <!-- /.sidebar -->
           </aside>
-            <div class="content-wrapper">
-              <section class="content-header">
-                <h1>{{.pageTitle}}&nbsp;</h1>
-                <ul class="breadcrumb">
-                  <li>
-                    <a href='{{urlfor "SiteController.Index"}}'>
-                      <i class='fa fa-dashboard'></i>
-                      首页
-                    </a>
-                  </li>
-                  {{range $breadcrumb := .breadcrumbs}}
-                  <li>
-                    <a href='{{index $breadcrumb "url"}}'>
-                      {{index $breadcrumb "label"}}
-                    </a>
-                  </li>
-                  {{end}}
-                </ul>
-              </section>
-              <section class="content">
-                  {{.LayoutContent}}
-              </section>
+            <div class="content-wrapper" style="padding:50px">
+              {{.grabc_content}}
             </div>
         </div>
-        {{template "layout/footer.html" .}}
     </body>
 </html>
+`

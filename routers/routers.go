@@ -4,6 +4,7 @@ import (
 	"github.com/astaxie/beego"
 	"grabc"
 	"grabc_test/controllers"
+	"grabc_test/libs"
 	"grabc_test/models"
 )
 
@@ -26,4 +27,6 @@ func init() {
 	grabc.AppendIgnoreRoute("site", "login")
 
 	grabc.Http_403("/site/nopermission")
+
+	grabc.SetLayout(libs.Grabc_layout, nil)
 }
