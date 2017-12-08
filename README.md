@@ -6,9 +6,9 @@
 
 GRABC 是一个beego权限管理插件，这个是一个beego应用GRABC的示例~~
 
-###### 详情 [grabc.liguosong.com](http://grabc.liguosong.com)
-
 ### 安装
-    go get github.com/codyi/grabc
+    go get github.com/codyi/grabc_example
     
-然后导入下面的数据表结构(注意：不能加前缀)
+然后执行install.sh，根据提示输入数据库的配置~~然后，然后安装完了~~是不是很简单，抓紧运行bee run 或者go run main.go看一下效果吧
+
+初始化登录用户名：18888888888 密码：123456
