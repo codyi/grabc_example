@@ -1,0 +1,8 @@
+appname = GRABC
+httpaddr = "127.0.0.1"
+runmode = "dev"
+viewspath = "views"
+recoverpanic = true
+Session.SessionOn = true
+site.title = "欢迎使用GRABC"
+site.static.version = 2

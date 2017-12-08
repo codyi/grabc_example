@@ -1,0 +1,21 @@
+body{
+	width: 100%;
+}
+
+/* install page start*/
+.install_warp{
+	margin: 0px auto;
+	width: 1000px;
+	text-align: center;
+}
+/* install page end*/
+
+/* login page start*/
+.login-page{
+	background: #d2d6de;
+}
+/* login page end*/
+
+.alert{
+	margin: 15px;
+}
