@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/astaxie/beego"
-	_ "grabc_test/routers"
+	_ "grabc_example/routers"
 )
 
 func main() {
