@@ -13,6 +13,9 @@ go get -u github.com/go-sql-driver/mysql
 echo "安装 beego/orm"
 go get github.com/astaxie/beego/orm
 
+echo "安装 grabc"
+go get github.com/codyi/grabc
+
 echo 
 cp conf/app.conf.example conf/app.conf
 
