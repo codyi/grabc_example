@@ -3,7 +3,7 @@ package models
 import (
 	"errors"
 	"github.com/astaxie/beego/orm"
-	. "goCronJob/libs"
+	. "grabc_test/libs"
 )
 
 type User struct {
@@ -52,8 +52,44 @@ func (this *User) ModifyPassword(password string) bool {
 	return false
 }
 
+//retrieve all user name and ids
+func (this User) UserList(pageIndex, pageCount int) (userList map[int]string, totalNum int, err error) {
+	userList = make(map[int]string, 0)
+	var users []*User
+	var total int64
+	o := orm.NewOrm()
+	_, err = o.QueryTable(this.TableName()).Limit(pageCount).Offset(pageCount * (pageIndex - 1)).All(&users)
+
+	if err != nil {
+		return userList, int(total), err
+	} else {
+		for _, u := range users {
+			userList[u.Id] = u.RealName
+		}
+	}
+
+	total, err = o.QueryTable(this.TableName()).Count()
+	return userList, int(total), err
+}
+
 //Find user by id
 func (this *User) FindById(id int) error {
 	o := orm.NewOrm()
 	return o.QueryTable(this.TableName()).Filter("id", id).One(this)
+}
+
+func (this User) GetId() int {
+	return this.Id
+}
+
+//Find user by id
+func (this User) FindNameById(id int) string {
+	o := orm.NewOrm()
+	err := o.QueryTable(this.TableName()).Filter("id", id).One(&this)
+
+	if err != nil {
+		return ""
+	}
+
+	return this.RealName
 }

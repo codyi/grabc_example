@@ -1,7 +1,14 @@
-## GoCronJob
-GoCronJob 是用于管理本机的定时任务系统。系统可以监听job的执行状态，记录执行的日志。
+## GRABC 
+[![GitHub forks](https://img.shields.io/github/forks/codyi/grabc.svg?style=social&label=Forks)](https://github.com/codyi/grabc/network)
+[![GitHub stars](https://img.shields.io/github/stars/codyi/grabc.svg?style=social&label=Starss)](https://github.com/hunterhug/GoWeb/stargazers)
+[![GitHub last commit](https://img.shields.io/github/last-commit/codyi/grabc.svg)](https://github.com/codyi/grabc)
+[![Go Report Card](https://goreportcard.com/badge/github.com/codyi/grabc)](https://goreportcard.com/report/github.com/codyi/grabc)  
 
-###### 详情 [gocron.liguosong.com](http://gocron.liguosong.com)
+GRABC 是一个beego权限管理插件，这个是一个beego应用GRABC的示例~~
+
+###### 详情 [grabc.liguosong.com](http://grabc.liguosong.com)
 
 ### 安装
-    执行一键安装脚本 install.sh
+    go get github.com/codyi/grabc
+    
+然后导入下面的数据表结构(注意：不能加前缀)

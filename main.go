@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/astaxie/beego"
-	_ "goCronJob/routers"
+	_ "grabc_test/routers"
 )
 
 func main() {

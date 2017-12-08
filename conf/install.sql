@@ -35,7 +35,7 @@ CREATE TABLE `users` (
 --  Records of `users`
 -- ----------------------------
 BEGIN;
-INSERT INTO `users` VALUES ('1', '13311582115', '6a204bd89f3c8348afd5c77c717a097a', '11111', '1111', '0', 'icodyi');
+INSERT INTO `users` VALUES ('1', '18888888888', '6a204bd89f3c8348afd5c77c717a097a', '11111', '1111', '0', 'icodyi');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

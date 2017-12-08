@@ -2,18 +2,26 @@ package routers
 
 import (
 	"github.com/astaxie/beego"
-	"goCronJob/controllers"
 	"grabc"
+	"grabc_test/controllers"
+	"grabc_test/models"
 )
 
 func init() {
+	var c []beego.ControllerInterface
+	c = append(c, &controllers.SiteController{}, &controllers.UserController{})
 	beego.Router("/", &controllers.SiteController{})
-	beego.AutoRouter(&controllers.SiteController{})
-	beego.AutoRouter(&controllers.InstallController{})
-	beego.AutoRouter(&controllers.UserController{})
-	beego.AutoRouter(&controllers.JobController{})
 
-	grabc.RegisterController(&controllers.SiteController{}, &controllers.InstallController{}, &controllers.UserController{}, &controllers.JobController{})
-	rbac := grabc.Rbac{}
-	rbac.CheckAccess()
+	for _, v := range c {
+		//将路由注册到beego
+		beego.AutoRouter(v)
+		//将路由注册到grabc
+		grabc.RegisterController(v)
+	}
+
+	//注册用户系统模型到grabc
+	grabc.RegisterUserModel(models.User{})
+
+	//忽律权限检查的页面
+	grabc.AppendIgnoreRoute("site", "login")
 }

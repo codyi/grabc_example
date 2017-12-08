@@ -2,15 +2,16 @@ package controllers
 
 import (
 	"errors"
+	"fmt"
 	"github.com/astaxie/beego"
-	"goCronJob/libs"
-	. "goCronJob/models"
+	"grabc"
+	"grabc_test/libs"
+	. "grabc_test/models"
 	"strings"
 )
 
 //BaseController
 type BaseController struct {
-	libs.Alert
 	beego.Controller
 	controllerName string
 	actionName     string
@@ -30,7 +31,7 @@ func (this *BaseController) Prepare() {
 
 // redirect to url
 func (this *BaseController) redirect(url string) {
-	this.Controller.Redirect(url, 301)
+	this.Controller.Redirect(url, 302)
 	this.StopRun()
 }
 
@@ -45,7 +46,6 @@ func (this *BaseController) showHtml(tpl ...string) {
 	this.Data["siteTitle"] = this.siteTitle
 	this.Data["siteStaticVersion"] = beego.AppConfig.String("site.static.version")
 	this.Data["app_name"] = beego.AppConfig.String("appname")
-	this.Data["alert_messages"] = this.Alert
 }
 
 //set layout
@@ -106,7 +106,13 @@ func (this *BaseController) checkPermision() {
 		this.user.FindById(sessionUId.(int))
 	}
 
+	grabc.RegisterIdentify(this.user)
+
 	if this.isLogin() {
+		if !grabc.CheckAccess(this.controllerName, this.actionName) {
+			fmt.Println("没有权限")
+			this.redirect(this.URLFor("SiteController.Index"))
+		}
 		//todo: check user pemission
 	} else if (this.controllerName != "site" && this.actionName != "login") || (this.controllerName == "site" && this.actionName != "login") {
 		this.redirect(this.URLFor("SiteController.Login"))

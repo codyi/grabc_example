@@ -1,5 +1,5 @@
 #!/bin/sh
-echo "GoCronJob 一键安装向导"
+echo "grabc_example 一键安装向导"
 
 echo "安装 beego"
 go get -u github.com/astaxie/beego
@@ -35,7 +35,7 @@ if [ $is_install = "yes" ]; then
 
 	read -p "输入mysql用户名:" user_name
 	read -p "输入mysql密码:" passpord
-	read -p "输入数据库名称(默认：goCronJob):" database_name
+	read -p "输入数据库名称(默认：grabc_example):" database_name
 	read -p "输入mysql host(默认：localhost):" host
 	read -p "输入mysql port(默认：3306):" host_port
 
@@ -48,7 +48,7 @@ if [ $is_install = "yes" ]; then
 	fi
 
 	if [ -z $database_name ]; then
-		database_name="goCronJob"
+		database_name="grabc_example"
 	fi
 
 	mysql -u $user_name -p$passpord -h $host -P $host_port -e "create database if not exists "$database_name" default charset utf8 collate utf8_general_ci;use "$database_name";source conf/install.sql;"
@@ -63,4 +63,6 @@ fi
 echo "\nisInstall = true" >> conf/app.conf
 echo 
 echo "配置完成"
-echo 
+echo
+echo "输入 bee run 或者 go run main.go 运行" 
+echo
