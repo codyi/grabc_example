@@ -2,10 +2,8 @@ package controllers
 
 import (
 	"errors"
-	"fmt"
 	"github.com/astaxie/beego"
 	"grabc"
-	"grabc_test/libs"
 	. "grabc_test/models"
 	"strings"
 )
@@ -58,11 +56,6 @@ func (this *BaseController) setSiteTile(title string) {
 	this.siteTitle = title
 }
 
-// 是否POST提交
-func (this *BaseController) isPost() bool {
-	return this.Ctx.Request.Method == "POST"
-}
-
 //login by phone and password
 func (this *BaseController) login(phone string, password string) (err error) {
 	if phone == "" || password == "" {
@@ -94,11 +87,6 @@ func (this *BaseController) isLogin() bool {
 
 //check user permission
 func (this *BaseController) checkPermision() {
-	if !libs.IsInstall() {
-		this.checkInstall()
-		return
-	}
-
 	sessionUId := this.GetSession("login_user_id")
 
 	if sessionUId != nil {
@@ -110,20 +98,16 @@ func (this *BaseController) checkPermision() {
 
 	if this.isLogin() {
 		if !grabc.CheckAccess(this.controllerName, this.actionName) {
-			fmt.Println("没有权限")
-			this.redirect(this.URLFor("SiteController.Index"))
+			this.redirect(this.URLFor("SiteController.NoPermission"))
 		}
-		//todo: check user pemission
 	} else if (this.controllerName != "site" && this.actionName != "login") || (this.controllerName == "site" && this.actionName != "login") {
 		this.redirect(this.URLFor("SiteController.Login"))
 	}
 }
 
-////if application is not installed,will redirect to install page
-func (this *BaseController) checkInstall() {
-	if !libs.IsInstall() && this.controllerName != "install" {
-		this.redirect(this.URLFor("InstallController.Index"))
-	}
+// 是否POST提交
+func (this *BaseController) isPost() bool {
+	return this.Ctx.Request.Method == "POST"
 }
 
 //set page title

@@ -6,8 +6,8 @@
     <body class="skin-blue sidebar-mini">
         <div class="wrapper">
             <header class="main-header">
-                <a href="index2.html" class="logo">
-                    {{.app_name}}
+                <a href="/site/index" class="logo">
+                    {{.app_name}}示例
                 </a>
 
             <nav class="navbar navbar-static-top">
@@ -49,7 +49,10 @@
             <section class="sidebar" style="height: auto;">
               <!-- sidebar menu: : style can be found in sidebar.less -->
               <ul class="sidebar-menu tree" data-widget="tree">
-                <li class="active"><a href='{{urlfor "JobController.Index"}}'><i class="fa fa-book"></i> <span>任务管理</span></a></li>
+                <li><a href='/route/index'><i class="fa fa-book"></i> <span>路由管理</span></a></li>
+                <li><a href='/permission/index'><i class="fa fa-book"></i> <span>权限管理</span></a></li>
+                <li><a href='/role/index'><i class="fa fa-book"></i> <span>角色管理</span></a></li>
+                <li><a href='/assignment/index'><i class="fa fa-book"></i> <span>用户授权</span></a></li>
               </ul>
             </section>
             <!-- /.sidebar -->

@@ -7,13 +7,10 @@ import (
 )
 
 type User struct {
-	Id         int    `json:"id" label:"id"`
-	Phone      string `json:"phone" label:"用户手机号"`
-	RealName   string `jsob:"real_name" label:"真实姓名"`
-	Password   string `json:"password" label:"登录密码"`
-	CreateTime int    `json:"create_time" label:"创建时间"`
-	UpdateTime int    `json:"update_time" label:"更新时间"`
-	IsLock     int    `json:"is_lock" label:"用户状态 0正常  1锁定"`
+	Id       int    `json:"id" label:"id"`
+	Phone    string `json:"phone" label:"用户手机号"`
+	RealName string `jsob:"real_name" label:"真实姓名"`
+	Password string `json:"password" label:"登录密码"`
 }
 
 //return current model's table name

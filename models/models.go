@@ -13,12 +13,7 @@ func init() {
 	db_port := beego.AppConfig.String("db.port")
 	db_name := beego.AppConfig.String("db.database_name")
 
-	if db_password == "" {
-		orm.RegisterDataBase("default", "mysql", db_user+"@tcp("+db_host+":"+db_port+")/"+db_name)
-	} else {
-		orm.RegisterDataBase("default", "mysql", db_user+":"+db_password+"@tcp("+db_host+":"+db_port+")/"+db_name)
-	}
-
+	orm.RegisterDataBase("default", "mysql", db_user+":"+db_password+"@tcp("+db_host+":"+db_port+")/"+db_name)
 	orm.RegisterModel(new(User))
 }
 

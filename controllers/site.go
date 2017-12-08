@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"github.com/astaxie/beego"
 	"strings"
 )
@@ -38,10 +37,16 @@ func (this *SiteController) Index() {
 }
 
 func (this *SiteController) Logout() {
-	fmt.Println("loginout")
 	if this.isLogin() {
 		this.BaseController.logout()
 	}
 
 	this.redirect(beego.URLFor("SiteController.Login"))
+}
+
+//main page
+func (this *SiteController) NoPermission() {
+	this.setPageTitle("权限不够")
+	this.addBreadcrumbs("错误提示", "")
+	this.showHtml("site/403.html")
 }

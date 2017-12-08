@@ -20,8 +20,10 @@ func init() {
 	}
 
 	//注册用户系统模型到grabc
-	grabc.RegisterUserModel(models.User{})
+	grabc.RegisterUserModel(&models.User{})
 
 	//忽律权限检查的页面
 	grabc.AppendIgnoreRoute("site", "login")
+
+	grabc.Http_403("/site/nopermission")
 }
