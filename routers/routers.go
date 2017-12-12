@@ -3,9 +3,9 @@ package routers
 import (
 	"github.com/astaxie/beego"
 	"github.com/grabc"
-	"grabc_test/controllers"
-	"grabc_test/libs"
-	"grabc_test/models"
+	"grabc_example/controllers"
+	"grabc_example/libs"
+	"grabc_example/models"
 )
 
 func init() {
