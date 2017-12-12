@@ -50,3 +50,7 @@ func (this *SiteController) NoPermission() {
 	this.addBreadcrumbs("错误提示", "")
 	this.showHtml("site/403.html")
 }
+
+func (this *SiteController) RABCMethods() []string {
+	return []string{"Get", "Post"}
+}

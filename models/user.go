@@ -3,7 +3,7 @@ package models
 import (
 	"errors"
 	"github.com/astaxie/beego/orm"
-	. "grabc_test/libs"
+	. "grabc_example/libs"
 )
 
 type User struct {
