@@ -3,8 +3,8 @@ package controllers
 import (
 	"errors"
 	"github.com/astaxie/beego"
-	"github.com/grabc"
-	. "grabc_test/models"
+	"github.com/codyi/grabc"
+	. "grabc_example/models"
 	"strings"
 )
 

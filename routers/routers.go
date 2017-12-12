@@ -2,7 +2,7 @@ package routers
 
 import (
 	"github.com/astaxie/beego"
-	"github.com/grabc"
+	"github.com/codyi/grabc"
 	"grabc_example/controllers"
 	"grabc_example/libs"
 	"grabc_example/models"
