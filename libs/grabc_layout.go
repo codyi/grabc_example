@@ -59,6 +59,7 @@ var Grabc_layout = `
                 <li><a href='/permission/index'><i class="fa fa-book"></i> <span>权限管理</span></a></li>
                 <li><a href='/role/index'><i class="fa fa-book"></i> <span>角色管理</span></a></li>
                 <li><a href='/assignment/index'><i class="fa fa-book"></i> <span>用户授权</span></a></li>
+                <li><a href='/menu/index'><i class="fa fa-book"></i> <span>菜单管理</span></a></li>
               </ul>
             </section>
             <!-- /.sidebar -->
