@@ -112,10 +112,10 @@ COMMIT;
 -- ----------------------------
 CREATE TABLE `rabc_route` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-  `route` varchar(100) NOT NULL COMMENT '路由名称',
+  `url` varchar(100) NOT NULL COMMENT '路由名称',
   `create_at` int(11) unsigned NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `rabc_route`
