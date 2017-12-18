@@ -153,5 +153,10 @@ CREATE TABLE `rabc_menu` (
   KEY `parent` (`parent`),
   CONSTRAINT `ac_menu_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `rabc_menu` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
-
+-- ----------------------------
+--  Records of `rabc_menu`
+-- ----------------------------
+BEGIN;
+INSERT INTO `rabc_menu` VALUES ('15', '权限管理', '16', 'permission/index', '0', '1513242204'), ('16', '系统权限', '0', 'site/index', '0', '1513242218'), ('17', '角色管理', '16', 'role/index', '0', '1513565748'), ('18', '用户授权', '16', 'assignment/index', '0', '1513565760'), ('19', '菜单管理', '16', 'menu/index', '0', '1513565785'), ('20', '路由管理', '16', 'route/index', '1', '1513567033');
+COMMIT;
 SET FOREIGN_KEY_CHECKS = 1;
