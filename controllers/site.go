@@ -11,44 +11,44 @@ type SiteController struct {
 
 //Login page
 func (this *SiteController) Login() {
-	this.setLayout("layout/main-login.html")
+	this.Layout = "layout/login.html"
 
-	if this.isLogin() {
-		this.redirect(beego.URLFor("SiteController.Index"))
+	if this.IsLogin() {
+		this.Redirect(beego.URLFor("SiteController.Index"))
 	}
 
-	if this.isPost() {
+	if this.IsPost() {
 		phone := strings.TrimSpace(this.GetString("phone"))
 		password := strings.TrimSpace(this.GetString("password"))
 
-		if err := this.BaseController.login(phone, password); err == nil {
-			this.redirect(beego.URLFor("SiteController.Index"))
+		if err := this.BaseController.Login(phone, password); err == nil {
+			this.Redirect(beego.URLFor("SiteController.Index"))
 		} else {
 			this.Data["error"] = err.Error()
 		}
 	}
 
-	this.showHtml()
+	this.ShowHtml()
 }
 
 //main page
 func (this *SiteController) Index() {
-	this.showHtml()
+	this.Layout = "layout/main.html"
+	this.ShowHtml()
 }
 
 func (this *SiteController) Logout() {
-	if this.isLogin() {
-		this.BaseController.logout()
+	if this.IsLogin() {
+		this.BaseController.Logout()
 	}
 
-	this.redirect(beego.URLFor("SiteController.Login"))
+	this.Redirect(beego.URLFor("SiteController.Login"))
 }
 
 //main page
 func (this *SiteController) NoPermission() {
-	this.setPageTitle("权限不够")
-	this.addBreadcrumbs("错误提示", "")
-	this.showHtml("site/403.html")
+	this.Layout = "layout/main.html"
+	this.ShowHtml("site/403.html")
 }
 
 func (this *SiteController) RABCMethods() []string {

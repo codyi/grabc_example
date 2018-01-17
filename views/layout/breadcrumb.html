@@ -1,0 +1,15 @@
+<ul class="breadcrumb">
+  <li>
+    <a href='{{urlfor "SiteController.Index"}}'>
+      <i class='fa fa-dashboard'></i>
+      首页
+    </a>
+  </li>
+  {{range $breadcrumb := .breadcrumbs}}
+  <li>
+    <a href='{{index $breadcrumb "url"}}'>
+      {{index $breadcrumb "label"}}
+    </a>
+  </li>
+  {{end}}
+</ul>

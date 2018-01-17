@@ -2,9 +2,22 @@ package models
 
 import (
 	"errors"
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
+	_ "github.com/go-sql-driver/mysql"
 	. "grabc_example/libs"
 )
+
+func init() {
+	db_host := beego.AppConfig.String("db.host")
+	db_user := beego.AppConfig.String("db.user")
+	db_password := beego.AppConfig.String("db.password")
+	db_port := beego.AppConfig.String("db.port")
+	db_name := beego.AppConfig.String("db.database_name")
+
+	orm.RegisterDataBase("default", "mysql", db_user+":"+db_password+"@tcp("+db_host+":"+db_port+")/"+db_name)
+	orm.RegisterModel(new(User))
+}
 
 type User struct {
 	Id       int    `json:"id" label:"id"`
@@ -15,7 +28,7 @@ type User struct {
 
 //return current model's table name
 func (this *User) TableName() string {
-	return GetTableName("users")
+	return "users"
 }
 
 //Find one user by phone from database
@@ -31,22 +44,6 @@ func (this *User) FindByPhone(phone string) error {
 //validate user password is correct
 func (this *User) ValidatePassword(password string) bool {
 	return this.Password == Md5(password)
-}
-
-//Modify user passowrd
-func (this *User) ModifyPassword(password string) bool {
-	if this == nil || this.Id <= 0 {
-		return false
-	}
-
-	this.Password = Md5(password)
-
-	o := orm.NewOrm()
-	if _, err := o.Update(this); err == nil {
-		return true
-	}
-
-	return false
 }
 
 //retrieve all user name and ids
