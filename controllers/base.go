@@ -4,7 +4,6 @@ import (
 	"errors"
 	"github.com/astaxie/beego"
 	"github.com/codyi/grabc"
-	"grabc_example/libs"
 	. "grabc_example/models"
 	"strings"
 )
@@ -86,11 +85,6 @@ func (this *BaseController) CheckPermision() {
 		if !grabc.CheckAccess(this.controllerName, this.actionName) {
 			this.Redirect(this.URLFor("SiteController.NoPermission"))
 		}
-
-		//注册grabc的模板
-		menus := make(map[string]interface{}, 0)
-		menus["grabc_menus"] = grabc.AccessMenus()
-		grabc.SetLayout(libs.Grabc_layout, menus)
 	} else if (this.controllerName != "site" && this.actionName != "login") || (this.controllerName == "site" && this.actionName != "login") {
 		this.Redirect(this.URLFor("SiteController.Login"))
 	}
