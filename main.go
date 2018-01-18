@@ -28,15 +28,12 @@ func init() {
 
 	//设置权限不足的提示页面路径
 	grabc.Http_403("/site/nopermission")
-
 	//设置grabc页面路径
 	//如果使用默认的，不要设置或者置空
-	// grabc.SetViewPath("")
-
+	//注意：设置grabc的模板必须在beego.Run()之前设置
+	// beego.AddViewPath("/Users/liguosong/work/go/src/github.com/codyi/grabc/views/")
 	//设置grabc的layout
-	// menus := make(map[string]interface{}, 0)
-	// menus["grabc_menus"] = grabc.AccessMenus()
-	// grabc.SetLayout("layout/main.html", menus)
+	grabc.SetLayout("layout/main.html", "views")
 }
 
 func main() {

@@ -4,6 +4,7 @@ import (
 	"errors"
 	"github.com/astaxie/beego"
 	"github.com/codyi/grabc"
+	"github.com/codyi/grabc/libs"
 	. "grabc_example/models"
 	"strings"
 )
@@ -14,6 +15,8 @@ type BaseController struct {
 	controllerName string
 	actionName     string
 	user           User
+	libs.Alert
+	libs.Breadcrumbs
 }
 
 // Prepare
@@ -38,7 +41,14 @@ func (this *BaseController) ShowHtml(tpl ...string) {
 		this.TplName = this.controllerName + "/" + this.actionName + ".html"
 	}
 
-	this.Data["grabc_menus"] = grabc.AccessMenus()
+	this.Data["menus"] = libs.ShowMenu(this.controllerName, this.actionName)
+	this.Data["alert"] = this.ShowAlert()
+	this.Data["breadcrumbs"] = this.ShowBreadcrumbs()
+
+	if this.IsLogin() {
+		this.Data["user_name"] = this.user.Phone
+		grabc.AddLayoutData("user_name", this.user.Phone)
+	}
 }
 
 //login by phone and password
