@@ -30,8 +30,9 @@ func init() {
 	grabc.Http_403("/site/nopermission")
 	//设置grabc页面路径
 	//如果使用默认的，不要设置或者置空
-	//注意：设置grabc的模板必须在beego.Run()之前设置
-	// beego.AddViewPath("/Users/liguosong/work/go/src/github.com/codyi/grabc/views/")
+	//注意：设置grabc的模板必须在beego.Run()之前设置，如果视图目录在当前项目中，可以使用相对目录，否则需要绝对路径
+	// grabc.SetViewPath("views")
+
 	//设置grabc的layout
 	grabc.SetLayout("layout/main.html", "views")
 }
