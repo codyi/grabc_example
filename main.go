@@ -26,8 +26,6 @@ func init() {
 	//增加忽律权限检查的页面
 	grabc.AppendIgnoreRoute("site", "login")
 
-	//设置权限不足的提示页面路径
-	grabc.Http_403("/site/nopermission")
 	//设置grabc页面路径
 	//如果使用默认的，不要设置或者置空
 	//注意：设置grabc的模板必须在beego.Run()之前设置，如果视图目录在当前项目中，可以使用相对目录，否则需要绝对路径
