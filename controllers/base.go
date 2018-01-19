@@ -7,6 +7,7 @@ import (
 	"github.com/codyi/grabc/libs"
 	. "grabc_example/models"
 	"strings"
+	"time"
 )
 
 //BaseController
@@ -41,13 +42,18 @@ func (this *BaseController) ShowHtml(tpl ...string) {
 		this.TplName = this.controllerName + "/" + this.actionName + ".html"
 	}
 
-	this.Data["menus"] = libs.ShowMenu(this.controllerName, this.actionName)
-	this.Data["alert"] = this.ShowAlert()
-	this.Data["breadcrumbs"] = this.ShowBreadcrumbs()
-
 	if this.IsLogin() {
-		this.Data["user_name"] = this.user.Phone
-		grabc.AddLayoutData("user_name", this.user.Phone)
+		this.Data["menus"] = libs.ShowMenu(this.controllerName, this.actionName)
+		this.Data["alert"] = this.ShowAlert()
+		this.Data["breadcrumbs"] = this.ShowBreadcrumbs()
+		this.Data["nowTime"] = time.Now().Format("2006-01-02 15:04:05")
+		this.Data["user_name"] = this.user.RealName
+		this.Data["user_phone"] = this.user.Phone
+
+		//如果grabc采用了新的模板，并且需要在模板中显示数据，可以通过如下的方式添加数据
+		grabc.AddLayoutData("user_name", this.Data["user_name"])
+		grabc.AddLayoutData("nowTime", this.Data["nowTime"])
+		grabc.AddLayoutData("user_phone", this.Data["user_phone"])
 	}
 }
 
