@@ -15,8 +15,14 @@ GRABC 是一个beego权限管理插件，这个是一个beego应用GRABC的示�
 然后，然后安装完啦~~~~~~是不是很简单抓紧运行下面命令看一下效果吧
 
 <pre>
-bee run 或 go run main.go
+bee run
 </pre>
+或者
+<pre>
+go build
+./grabc_example
+</pre>
+
 初始化用户  
 
 用户名：18888888888 密码：123456  超级管理员--可以配置路由、权限、角色、用户修改密码  
@@ -25,3 +31,5 @@ bee run 或 go run main.go
 
 
 tips:可以根据权限动态控制系统内部的按钮显示，包括导航，链接~~
+
+#### 注意：不能直接运行go run main.go，因为GRABC中在启动的时候会设置默认的视图路径地址，直接运行go run main.go不能获取到正确的目录地址
