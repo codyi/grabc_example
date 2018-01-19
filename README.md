@@ -11,8 +11,12 @@ GRABC 是一个beego权限管理插件，这个是一个beego应用GRABC的示�
 
     git clone git@github.com:codyi/grabc_example.git
     
-然后进入项目目录执行install.sh，根据提示输入数据库的配置~~然后，然后安装完了~~是不是很简单，抓紧运行bee run 或 go run main.go看一下效果吧（默认网址：127.0.0.1：8080）
+然后进入grabc_example目录执行install.sh，根据提示输入数据库的配置。
+然后，然后安装完啦~~~~~~是不是很简单抓紧运行下面命令看一下效果吧
 
+<pre>
+bee run 或 go run main.go
+</pre>
 初始化用户  
 
 用户名：18888888888 密码：123456  超级管理员--可以配置路由、权限、角色、用户修改密码  
