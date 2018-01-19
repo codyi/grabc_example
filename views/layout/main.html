@@ -33,8 +33,27 @@
                     <li class="dropdown user user-menu">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-user"></i>
-                        <span class="hidden-xs">你好{{.user_name}}</span>
+                        <span class="hidden-xs">你好{{.user_phone}}</span>
                       </a>
+                      <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                          <p>
+                            欢迎{{.user_name}}登陆
+                            <small style="margin: 30px">当前时间：{{.nowTime}}</small>
+                            <a style="color:white" href="http://grabc.liguosong.com/">GRABC 文档</a>
+                          </p>
+                        </li>
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                          <div class="pull-left">
+                            <a href="/user/modifypassword" class="btn btn-default btn-flat">修改密码</a>
+                          </div>
+                          <div class="pull-right">
+                            <a href="/site/logout" class="btn btn-default btn-flat">退出</a>
+                          </div>
+                        </li>
+                      </ul>
                     </li>
                   </ul>
                 </div>
@@ -52,6 +71,7 @@
                 {{str2html .breadcrumbs}}
               </section>
               <section class="content">
+                {{str2html .alert}}
                 {{.LayoutContent}}
               </section>
             </div>
