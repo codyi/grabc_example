@@ -33,6 +33,19 @@ func init() {
 
 	//设置grabc的layout
 	grabc.SetLayout("layout/main.html", "views")
+
+	//注册获取当前登录用户ID的函数
+	grabc.RegisterUserIdFunc(func(c *beego.Controller) int {
+		sessionUId := c.GetSession("login_user_id")
+
+		if sessionUId != nil {
+			user := models.User{}
+			user.FindById(sessionUId.(int))
+			return user.Id
+		}
+
+		return 0
+	})
 }
 
 func main() {
