@@ -10,7 +10,7 @@ import (
 func init() {
 	var c []beego.ControllerInterface
 	c = append(c, &controllers.SiteController{}, &controllers.UserController{})
-	beego.Router("/", &controllers.SiteController{})
+	beego.Router("/", &controllers.SiteController{}, "*:Index")
 
 	for _, v := range c {
 		//将路由注册到beego
