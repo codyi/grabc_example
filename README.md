@@ -4,7 +4,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/codyi/grabc_example.svg)](https://github.com/codyi/grabc_example)
 [![Go Report Card](https://goreportcard.com/badge/github.com/codyi/grabc_example)](https://goreportcard.com/report/github.com/codyi/grabc_example)  
 
-GRABC 是一个beego权限管理插件，这个是一个beego应用GRABC的示例~~
+GRABC 是一个beego权限管理插件，这个是一个beego应用GRABC的示例~~ 示例地址：http://grabc.demo.liguosong.com/site/login
 
 ### 安装
 进入go的src目录，执行以下命令：
