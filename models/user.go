@@ -72,10 +72,6 @@ func (this *User) FindById(id int) error {
 	return o.QueryTable(this.TableName()).Filter("id", id).One(this)
 }
 
-func (this User) GetId() int {
-	return this.Id
-}
-
 //Find user by id
 func (this User) FindNameById(id int) string {
 	o := orm.NewOrm()

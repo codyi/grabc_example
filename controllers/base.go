@@ -95,7 +95,7 @@ func (this *BaseController) CheckPermision() {
 		this.user.FindById(sessionUId.(int))
 	}
 
-	grabc.RegisterIdentify(this.user)
+	grabc.SetBeegoController(&this.Controller)
 
 	if this.IsLogin() {
 		if !grabc.CheckAccess(this.controllerName, this.actionName) {
